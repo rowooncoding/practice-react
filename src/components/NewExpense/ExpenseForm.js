@@ -2,33 +2,20 @@ import { useState } from "react";
 import "./ExpenseForm.css";
 
 export default function ExpenseForm() {
-  const [userInput, setUserInput] = useState({
-    enteredTitle: "",
-    enteredAmount: "",
-    enteredDate: "",
-  });
+  const [enteredTtile, setEnteredTitle] = useState("");
+  const [enteredAmount, setEnteredAmount] = useState("");
+  const [enteredDate, setEnteredDate] = useState("");
 
   const titleChangeHandler = (e) => {
-    // setUserInput({
-    //   // state를 업데이트 하면 여러개의 객체를 한번에 다루는 경우 업데이트 되는 객체를 제외한 나머지를 잃어버리기 때문에 객체를 복사하여 나머지를 잃어버리지 않게 한다
-    //   ...userInput,
-    //   enteredTitle: e.target.vlaue,
-    // });
-    setUserInput((prevState) => {
-      return { ...prevState, enteredTitle: e.target.value };
-    });
+    setEnteredTitle(e.target.value);
   };
 
   const amountChangeHandler = (e) => {
-    setUserInput((prevState) => {
-      return { ...prevState, enteredAmount: e.target.value };
-    });
+    setEnteredAmount(e.target.value);
   };
 
   const dataChangeHandler = (e) => {
-    setUserInput((prevState) => {
-      return { ...prevState, enteredDate: e.target.value };
-    });
+    setEnteredDate(e.target.value);
   };
 
   return (

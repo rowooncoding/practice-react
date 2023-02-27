@@ -30,8 +30,11 @@ const DUMMY_EXPENSES = [
 function App() {
   const [expenses, setExpenses] = useState(DUMMY_EXPENSES);
   const addExpenseHandler = (expense) => {
-    // 기존의 배열을 가져와서(expenses) 새로운 배열에([expense]) 기존요소와 함께 넣기 위함([...expenses])
-    setExpenses([expense, ...expenses]);
+    // 1. 리액트에 의해서 이전 expenses를 받게 된다
+    setExpenses((prevExpenses) => {
+      // 매개변수로 받는 새로운 expense에 이전 prevExpense를 더해준다
+      return [expense, ...prevExpenses];
+    });
   };
   return (
     <div>

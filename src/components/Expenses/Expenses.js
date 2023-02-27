@@ -9,6 +9,10 @@ export default function Expenses(props) {
   const filterChangeHandler = (selectedYear) => {
     setfilteredYear(selectedYear);
   };
+  const filteredExpenses = props.items.filter((expense) => {
+    // data.getFullYear() : data에서 4자리수 연도를 가져온다
+    return expense.date.getFullYear().toString() === filteredYear;
+  });
 
   return (
     <div>
@@ -17,8 +21,9 @@ export default function Expenses(props) {
           selected={filteredYear}
           onChangeFilter={filterChangeHandler}
         />
-        {props.items.map((expense) => (
+        {filteredExpenses.map((expense) => (
           <ExpenseItem
+            key={expense.id}
             title={expense.title}
             amount={expense.amount}
             date={expense.date}
